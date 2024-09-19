@@ -1,19 +1,15 @@
 package ru.yandex.praktikum;
 
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.Test;
-import ru.yandex.praktikum.pageobject.AboutRentScreenSamokat;
-import ru.yandex.praktikum.pageobject.HomePageSamokat;
-import ru.yandex.praktikum.pageobject.PlaceAnOrderScreenSamokat;
-import ru.yandex.praktikum.pageobject.ScooterAboutScreenSamokat;
+import pageobject.AboutRentScreenSamokat;
+import pageobject.PlaceAnOrderScreenSamokat;
+import pageobject.ScooterAboutScreenSamokat;
 
 @RunWith(Parameterized.class)
-public class MakeOrder {
-    private WebDriver driver;
+public class MakeOrder extends BaseTest {
+
     private String firstName;
     private String secondName;
     private String adress;
@@ -37,11 +33,8 @@ public class MakeOrder {
     }
 
     @Test
-    public void MakeOrderScriptOne() {
+    public void makeOrderScriptOne() {
 
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        HomePageSamokat objHomePage = new HomePageSamokat(driver);
         objHomePage.goToScooterAboutScreenOrderButtonUp();
 
         ScooterAboutScreenSamokat objScooterAboutScreen = new ScooterAboutScreenSamokat(driver);
@@ -55,11 +48,8 @@ public class MakeOrder {
     }
 
     @Test
-    public void MakeOrderScriptTwo() {
+    public void makeOrderScriptTwo() {
 
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        HomePageSamokat objHomePage = new HomePageSamokat(driver);
         objHomePage.goToScooterAboutScreenOrderButtonDown();
 
         ScooterAboutScreenSamokat objScooterAboutScreen = new ScooterAboutScreenSamokat(driver);
@@ -70,10 +60,5 @@ public class MakeOrder {
 
         PlaceAnOrderScreenSamokat objPlaceAnOrderScreen = new PlaceAnOrderScreenSamokat(driver);
         objPlaceAnOrderScreen.placeAnOrder();
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
     }
 }

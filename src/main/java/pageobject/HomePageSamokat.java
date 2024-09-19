@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.pageobject;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -142,21 +142,18 @@ public class HomePageSamokat {
 
     //шаг для открытия текста в разделе "Вопросы о важном"
     public void expandFAQ(int index){
-        clickCookieButton();
         scrollListFAQ();
         expendAccordionHeading(index);
     }
 
     //шаг для открытия экрана "Для кого самокат" при нажатии на верхнюю кнопку "Заказать"
     public void goToScooterAboutScreenOrderButtonUp(){
-        clickCookieButton();
         clickOrderButtonUp();
         waitScooterAboutScreen();
     }
 
     //шаг для открытия экрана "Для кого самокат" при нажатии на нижнюю кнопку "Заказать"
     public void goToScooterAboutScreenOrderButtonDown(){
-        clickCookieButton();
         scrollOrderButtunDown();
         clickOrderButtonDown();
         waitScooterAboutScreen();
@@ -164,7 +161,6 @@ public class HomePageSamokat {
 
     //шаг для ввода неправильного номера заказа в поле "Введите номер заказа"
     public void goToNoSuchOrderScreen(String number){
-        clickCookieButton();
         clickOrderStatusButton();
         enterOrderNumberField(number);
         clickGoButton();

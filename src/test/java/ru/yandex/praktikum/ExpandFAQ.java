@@ -1,17 +1,13 @@
 package ru.yandex.praktikum;
 
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import ru.yandex.praktikum.pageobject.HomePageSamokat;
 
 @RunWith(Parameterized.class)
-public class ExpandFAQ {
-    private WebDriver driver;
+public class ExpandFAQ extends BaseTest {
+
     private int index;
     private String expectedAnswer;
 
@@ -35,18 +31,10 @@ public class ExpandFAQ {
     }
 
     @Test
-    public void ExpandFAQTest() {
+    public void expandFAQTest() {
 
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        HomePageSamokat objHomePage = new HomePageSamokat(driver);
         objHomePage.expandFAQ(index);
         String homePageAnswers = objHomePage.checkAnswer(index);
         assertEquals("Текст кнопки должен быть: " + expectedAnswer, expectedAnswer, homePageAnswers);
-    }
-
-    @After
-    public void teardown() {
-        driver.quit();
     }
 }
